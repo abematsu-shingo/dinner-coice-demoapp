@@ -1,8 +1,13 @@
-<script setup></script>
+<script setup>
+import FoodCrad from './components/FoodCard.vue'
+</script>
 
 <template>
   <main>
-    <h1>今日何食べる？</h1>
+    <h1 class="title">今日何食べる？</h1>
+    <FoodCrad />
+    <p>VS</p>
+    <FoodCrad />
   </main>
 </template>
 
@@ -11,5 +16,9 @@ main {
   width: 350px;
   margin: 100px auto;
   text-align: center;
+}
+
+.title {
+  margin-bottom: 60px;
 }
 </style>

@@ -20,14 +20,30 @@ const foods = ref([
   { name: '居酒屋', emoji: '🏮' },
   { name: 'ファミレス', emoji: '🍽️' },
 ])
+const pickedFood = ref(0)
+const newFood = ref(1)
+function pickFood(index) {
+  pickedFood.value = index
+  newFood.value++
+}
 </script>
 
 <template>
   <main>
     <h1 class="title">今日何食べる？</h1>
-    <FoodCrad :name="foods[0].name" :emoji="foods[0].emoji" />
-    <p>VS</p>
-    <FoodCrad :name="foods[0].name" :emoji="foods[0].emoji" />
+    <FoodCrad
+      :name="foods[pickedFood].name"
+      :emoji="foods[pickedFood].emoji"
+      @click="pickFood(pickedFood)"
+    />
+    <template v-if="newFood < foods.length">
+      <p>VS</p>
+      <FoodCrad
+        :name="foods[newFood].name"
+        :emoji="foods[newFood].emoji"
+        @click="pickFood(newFood)"
+      />
+    </template>
   </main>
 </template>
 
